@@ -3,25 +3,27 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f6f3ec">
-
-<meta name="description" content="Beloved Skin by Teresa-Beloved Elmore – dein Kosmetikstudio in Böblingen. Gesichtsbehandlungen, Hydro-Glow-Facial, Microneedling, Lash Lifting und Brow Lifting.">
-
-<title>Beloved Skin | Kosmetikstudio Böblingen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4eee6">
+<meta name="description" content="Beloved Skin by Teresa-Beloved Elmore – Kosmetikstudio in Böblingen. Hydro-Glow-Facial, Microneedling, Gesichtsbehandlungen, Lash Lifting, Brow Lifting, Laser und Massage.">
+<title>Beloved Skin | Beauty Studio Böblingen</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --cream: #f6f3ec;
-  --sand: #eae5d9;
-  --olive: #59644e;
-  --dark: #303a30;
-  --text: #42463e;
-  --white: #fffefa;
+  --cream: #f4eee6;
+  --paper: #f9f5ee;
+  --sand: #e8ded1;
+  --olive: #343d2a;
+  --olive-light: #606a53;
+  --ink: #25251f;
+  --muted: #6f6c64;
+  --line: rgba(52,61,42,.19);
+  --serif: "Italiana", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
 }
 
 * {
@@ -30,14 +32,15 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
   margin: 0;
   background: var(--cream);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  line-height: 1.7;
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -45,9 +48,15 @@ a {
   text-decoration: none;
 }
 
+button {
+  font: inherit;
+}
+
 img {
-  max-width: 100%;
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 h1, h2, h3, p {
@@ -55,430 +64,1214 @@ h1, h2, h3, p {
 }
 
 h1, h2, h3 {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--serif);
   font-weight: 400;
-  line-height: 1.2;
 }
 
-h1 {
-  font-size: clamp(42px, 6vw, 82px);
-}
-
-h2 {
-  font-size: clamp(30px, 4vw, 52px);
-}
-
-h3 {
-  font-size: 23px;
+::selection {
+  background: #b5bda8;
+  color: var(--ink);
 }
 
 .container {
-  width: min(1160px, 90%);
+  width: min(1440px, calc(100% - 104px));
   margin: auto;
 }
 
-.eyebrow {
+.section-label {
+  font-size: 10px;
+  letter-spacing: .32em;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--olive);
-  margin-bottom: 18px;
+  font-weight: 600;
+  line-height: 1.6;
 }
 
-.button {
-  display: inline-block;
+.display {
+  font-family: var(--serif);
+  font-size: clamp(54px, 6vw, 96px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.section-title {
+  font-size: clamp(42px, 4.5vw, 75px);
+  line-height: 1.04;
+  letter-spacing: -.035em;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  padding: 13px 17px 13px 24px;
+  border-radius: 100px;
   background: var(--olive);
-  color: white;
-  padding: 15px 27px;
+  color: #fff;
   border: 1px solid var(--olive);
-  font-size: 12px;
-  letter-spacing: 1.3px;
   text-transform: uppercase;
-  transition: .25s;
-  cursor: pointer;
+  letter-spacing: .15em;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background .3s, transform .3s;
 }
 
-.button:hover {
-  background: var(--dark);
+.btn:hover {
+  background: #59664b;
+  transform: translateY(-2px);
 }
 
-.button-outline {
+.btn-circle {
+  width: 27px;
+  height: 27px;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.btn-outline {
   background: transparent;
   color: var(--olive);
+  border-color: rgba(52,61,42,.5);
 }
 
-.button-outline:hover {
-  color: white;
+.btn-outline .btn-circle {
+  border-color: rgba(52,61,42,.5);
 }
 
-header {
-  background: rgba(246,243,236,.97);
+.btn-outline:hover {
+  color: #fff;
+}
+
+.site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid #e4e0d7;
+  background: rgba(246,240,232,.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(52,61,42,.09);
 }
 
-nav {
-  min-height: 86px;
+.header-inner {
+  min-height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
 }
 
-.logo {
-  color: var(--dark);
-  font-family: 'Manrope', sans-serif;
-  font-size: 22px;
-  letter-spacing: 4px;
-  font-weight: 600;
-}
-
-.logo small {
-  display: block;
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-align: center;
-  font-weight: 400;
-}
-
-.navlinks {
-  display: flex;
-  gap: 28px;
+.brand {
+  display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  font-size: 12px;
+  flex-shrink: 0;
 }
 
-.navlinks a:hover {
-  color: var(--olive);
+.brand-main {
+  font-size: 19px;
+  letter-spacing: .27em;
+  line-height: 1.3;
 }
+
+.brand-sub {
+  font-size: 7px;
+  letter-spacing: .23em;
+  margin-top: 4px;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  margin-left: auto;
+  margin-right: 40px;
+}
+
+.desktop-nav a {
+  font-size: 12px;
+  transition: color .25s;
+}
+
+.desktop-nav a:hover {
+  color: #7d886e;
+}
+
+.header-book {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  color: var(--olive);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+/* STARTSEITE */
 
 .hero {
-  min-height: 680px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  min-height: 650px;
+  height: min(760px, calc(100svh - 76px));
+  position: relative;
+  isolation: isolate;
+  display: flex;
   align-items: center;
-  gap: 7%;
-  padding-top: 60px;
-  padding-bottom: 70px;
+  overflow: hidden;
+  background: #d6c5b5;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+
+.hero-photo img {
+  object-position: center 38%;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(
+    90deg,
+    rgba(246,239,229,.98) 0%,
+    rgba(246,239,229,.94) 25%,
+    rgba(246,239,229,.58) 42%,
+    rgba(246,239,229,.04) 68%
+  );
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 75vw;
+  height: 115vw;
+  max-height: 1100px;
+  left: 37%;
+  top: -55%;
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 50%;
+  transform: rotate(27deg);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 65px 0;
+}
+
+.hero .section-label {
+  margin-bottom: 26px;
 }
 
 .hero h1 {
-  color: var(--dark);
-}
-
-.hero p {
-  max-width: 460px;
-  font-size: 16px;
+  max-width: 650px;
   margin-bottom: 30px;
 }
 
-.hero-image {
-  height: 570px;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 180px 180px 0 0;
+.hero-description {
+  max-width: 355px;
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 28px;
 }
 
-.section {
-  padding: 110px 0;
+.hero-side {
+  position: absolute;
+  right: 6%;
+  bottom: 18%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  font-size: 10px;
+  letter-spacing: .25em;
+  z-index: 2;
 }
 
-.center {
-  text-align: center;
+.hero-side::before {
+  content: "";
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  z-index: -1;
 }
 
-.intro {
-  background: var(--sand);
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 36px;
+  font-size: 10px;
+  letter-spacing: .25em;
 }
 
-.intro .container {
-  max-width: 790px;
-  text-align: center;
+.scroll-icon {
+  width: 15px;
+  height: 28px;
+  border: 1px solid currentColor;
+  border-radius: 20px;
+  position: relative;
 }
 
-.intro p {
-  font-size: 17px;
-  line-height: 1.9;
+.scroll-icon::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 5px;
+  width: 1px;
+  height: 8px;
+  background: currentColor;
+  animation: scrollDot 2s infinite;
 }
 
-.treatments-header {
-  max-width: 700px;
-  margin-bottom: 48px;
+@keyframes scrollDot {
+  0% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+/* PHILOSOPHIE */
+
+.philosophy {
+  display: grid;
+  grid-template-columns: 1.05fr 1.3fr 1.15fr;
+  min-height: 390px;
+}
+
+.philosophy-image {
+  overflow: hidden;
+}
+
+.philosophy-image img {
+  transition: transform 1s;
+}
+
+.philosophy-image:hover img {
+  transform: scale(1.05);
+}
+
+.philosophy-copy {
+  background: #f6f0e8;
+  padding: 60px clamp(28px,4vw,70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.philosophy-copy .section-label {
+  margin-bottom: 22px;
+}
+
+.philosophy-copy h2 {
+  font-size: clamp(38px,4vw,64px);
+  line-height: 1;
+  letter-spacing: -.04em;
+  margin-bottom: 25px;
+}
+
+.philosophy-copy p {
+  font-size: 13px;
+  line-height: 1.75;
+  max-width: 490px;
+  margin-bottom: 14px;
+}
+
+.philosophy-right {
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-right::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,transparent,rgba(30,30,22,.3));
+}
+
+.philosophy-words {
+  position: absolute;
+  z-index: 2;
+  right: 12%;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #fff;
+  letter-spacing: .28em;
+  font-size: 10px;
+}
+
+/* BEHANDLUNGEN */
+
+.treatments {
+  padding: 105px 0 110px;
+  background: var(--paper);
+}
+
+.treatments-heading {
+  display: grid;
+  grid-template-columns: 1.1fr .8fr auto;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 42px;
+}
+
+.treatments-heading .section-label {
+  margin-bottom: 15px;
+}
+
+.treatments-heading h2 {
+  margin-bottom: 0;
+}
+
+.treatments-intro {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 300px;
+  margin-bottom: 7px;
 }
 
 .treatment-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(7,minmax(0,1fr));
+  gap: 11px;
 }
 
-.treatment {
-  background: var(--white);
-  padding-bottom: 25px;
+.treatment-card {
+  min-width: 0;
+  position: relative;
 }
 
-.treatment img {
+.treatment-photo {
   width: 100%;
-  height: 290px;
-  object-fit: cover;
+  aspect-ratio: 1/1.15;
+  overflow: hidden;
+  background: #ded2c5;
 }
 
-.treatment-content {
-  padding: 27px 25px 10px;
+.treatment-photo img {
+  transition: transform .7s ease, filter .7s ease;
 }
 
-.treatment-content p {
-  font-size: 14px;
+.treatment-card:hover img {
+  transform: scale(1.08);
+  filter: saturate(.85);
 }
 
-.treatment-content a {
-  font-size: 12px;
-  color: var(--olive);
-  font-weight: 700;
-  border-bottom: 1px solid var(--olive);
-  padding-bottom: 5px;
+.treatment-info {
+  padding: 16px 4px 12px;
+  position: relative;
+  min-height: 180px;
 }
 
-/* ÜBER MICH – NEUES PORTRÄT */
+.treatment-info h3 {
+  font-size: clamp(19px,1.5vw,25px);
+  line-height: 1.1;
+  letter-spacing: -.025em;
+  margin-bottom: 11px;
+}
+
+.treatment-info p {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #5b5750;
+  margin-bottom: 24px;
+}
+
+.card-arrow {
+  position: absolute;
+  right: 3px;
+  bottom: 8px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(52,61,42,.45);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  transition: .25s;
+}
+
+.treatment-card:hover .card-arrow {
+  background: var(--olive);
+  color: #fff;
+}
+
+.treatment-note {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 34px;
+}
+
+/* ÜBER MICH */
 
 .about {
-  background: #e9e6dc;
+  position: relative;
+  padding: 115px 0;
+  background: #e9dfd4;
   overflow: hidden;
 }
 
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 9%;
-}
-
-.about-photo {
-  position: relative;
-  min-height: 530px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.about-photo::before {
+.about::before {
   content: "";
   position: absolute;
-  width: 85%;
-  height: 85%;
-  bottom: 0;
-  border-radius: 240px 240px 0 0;
-  background: #d9d1c3;
+  width: 480px;
+  height: 480px;
+  left: -220px;
+  top: 10%;
+  background: radial-gradient(
+    ellipse,
+    rgba(107,115,79,.19),
+    transparent 70%
+  );
+  filter: blur(30px);
+  pointer-events: none;
 }
 
-.about-photo img {
+.about-inner {
+  display: grid;
+  grid-template-columns: .8fr 1.45fr;
+  gap: 8%;
   position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 530px;
-  object-fit: contain;
-  object-position: center bottom;
 }
 
-.about-text p {
-  font-size: 15px;
-  line-height: 1.9;
+.about-heading {
+  position: sticky;
+  top: 130px;
+  align-self: start;
 }
+
+.about-heading .section-label {
+  margin-bottom: 24px;
+}
+
+.about-heading h2 {
+  font-size: clamp(57px,6.5vw,106px);
+  line-height: .98;
+  letter-spacing: -.05em;
+  margin-bottom: 28px;
+}
+
+.handwriting {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 33px;
+  transform: rotate(-9deg);
+  color: #7d756b;
+  display: inline-block;
+  margin: 0 0 20px 25%;
+}
+
+.about-copy {
+  columns: 2;
+  column-gap: 48px;
+  column-rule: 1px solid rgba(52,61,42,.13);
+  padding-top: 22px;
+}
+
+.about-copy h3 {
+  font-size: 35px;
+  line-height: 1.2;
+  break-after: avoid;
+  margin-bottom: 22px;
+}
+
+.about-copy p {
+  font-size: 13px;
+  line-height: 1.88;
+  color: #494740;
+  margin-bottom: 19px;
+  break-inside: avoid;
+}
+
+.about-copy .signature {
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--olive);
+  margin-top: 22px;
+}
+
+.about-action {
+  margin-top: 35px;
+  text-align: center;
+}
+
+/* ZITAT */
 
 .statement {
+  position: relative;
+  min-height: 280px;
   background: var(--olive);
-  color: white;
-  text-align: center;
-  padding: 100px 20px;
+  color: #f5eee4;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.statement-photo {
+  position: absolute;
+  inset: 0;
+  opacity: .2;
+}
+
+.statement-photo img {
+  filter: grayscale(1);
+}
+
+.statement-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: .5fr 1.35fr .65fr;
+  gap: 55px;
+  align-items: center;
+  padding: 55px 0;
+}
+
+.statement .section-label {
+  color: #d8d8c7;
 }
 
 .statement h2 {
-  max-width: 750px;
-  margin: 0 auto 20px;
+  font-size: clamp(35px,4vw,65px);
+  line-height: 1.06;
+  letter-spacing: -.035em;
+  margin: 0;
 }
 
 .statement p {
-  max-width: 650px;
-  margin: auto;
-  color: #e7e9e0;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 220px;
+  margin: 0;
+  color: #e5e4da;
+}
+
+/* TERMINBUCHUNG */
+
+.booking {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  min-height: 350px;
+  background: #f1e9df;
+}
+
+.booking-image {
+  overflow: hidden;
+}
+
+.booking-image img {
+  transition: transform .8s;
+}
+
+.booking-image:hover img {
+  transform: scale(1.04);
+}
+
+.booking-center {
+  padding: 45px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.booking-center h2 {
+  font-size: clamp(40px,4vw,65px);
+  line-height: 1.05;
+  margin: 15px 0;
+}
+
+.booking-center p {
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 340px;
+  margin-bottom: 22px;
+}
+
+/* KONTAKT */
+
+.contact {
+  background: var(--paper);
+  padding: 55px 0 65px;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr;
+  gap: 35px;
 }
 
-.contact-grid p {
-  margin-bottom: 25px;
+.contact-title {
+  font-size: 50px;
+  line-height: 1.1;
+  margin-bottom: 10px;
 }
 
-.contact-label {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--olive);
-  margin-bottom: 5px;
+.contact-intro {
+  font-size: 12px;
+  line-height: 1.8;
+  max-width: 270px;
 }
 
-footer {
-  background: var(--dark);
-  color: #f6f3ec;
-  padding: 55px 0 25px;
+.contact-block .section-label {
+  margin-bottom: 20px;
 }
 
-.footer-grid {
+.contact-block p,
+.contact-block a {
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.contact-block a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: #a4a18e;
+}
+
+.contact-block a:hover {
+  color: #728060;
+}
+
+.contact-block address {
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* FOOTER */
+
+.footer {
+  background: #e9e0d6;
+  border-top: 1px solid var(--line);
+  padding: 36px 0;
+}
+
+.footer-inner {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 30px;
-  margin-bottom: 50px;
+  flex-wrap: wrap;
 }
 
-footer a:hover {
-  text-decoration: underline;
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  font-size: 11px;
 }
 
-.footer-bottom {
-  border-top: 1px solid #677066;
-  padding-top: 22px;
-  font-size: 12px;
-  opacity: .8;
+.footer-meta {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 10px;
+  color: #777168;
 }
 
-@media(max-width: 800px) {
-  nav {
-    min-height: 75px;
+.back-top {
+  border: 1px solid var(--olive);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.footer-legal {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+  padding-top: 20px;
+  color: #7c766d;
+  font-size: 10px;
+}
+
+/* MOBILER BUCHUNGSBUTTON */
+
+.floating-book {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 80;
+  display: none;
+  box-shadow: 0 8px 30px rgba(0,0,0,.16);
+}
+
+/* SCROLL-ANIMATIONEN */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
   }
 
-  .logo {
-    font-size: 17px;
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 1180px) {
+  .container {
+    width: min(100% - 64px,1440px);
   }
 
-  .navlinks {
-    gap: 12px;
+  .desktop-nav {
+    gap: 20px;
+    margin-right: 10px;
   }
 
-  .navlinks a:not(.nav-book) {
+  .treatment-grid {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 24px;
+  }
+
+  .treatment-info {
+    min-height: 160px;
+  }
+
+  .treatments-heading {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .treatments-heading .btn {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .philosophy {
+    grid-template-columns: 1fr 1.25fr;
+  }
+
+  .philosophy-right {
     display: none;
   }
 
-  .nav-book {
-    font-size: 11px;
+  .contact-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+/* SMARTPHONE */
+
+@media (max-width: 760px) {
+  .container {
+    width: calc(100% - 38px);
   }
 
-  .hero,
-  .about-grid,
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .header-inner {
+    min-height: 68px;
+  }
+
+  .brand-main {
+    font-size: 15px;
+    letter-spacing: .2em;
+  }
+
+  .brand-sub {
+    font-size: 6px;
+  }
+
+  .desktop-nav,
+  .header-book {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .mobile-nav {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    padding: 28px 22px 36px;
+    background: var(--paper);
+    box-shadow: 0 20px 35px rgba(0,0,0,.09);
+    flex-direction: column;
+    gap: 23px;
+    font-size: 15px;
+  }
+
+  .mobile-nav.open {
+    display: flex;
   }
 
   .hero {
-    padding-top: 65px;
-    min-height: auto;
+    height: auto;
+    min-height: 760px;
+    align-items: flex-start;
   }
 
-  .hero-image {
-    height: 440px;
+  .hero-photo img {
+    object-position: 65% center;
   }
 
-  .section {
+  .hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(246,239,229,.98) 0%,
+      rgba(246,239,229,.9) 30%,
+      rgba(246,239,229,.35) 59%,
+      rgba(246,239,229,.03) 100%
+    );
+  }
+
+  .hero::after {
+    left: 25%;
+    top: 30%;
+    width: 120vw;
+    height: 120vw;
+  }
+
+  .hero-content {
+    padding-top: 78px;
+    padding-bottom: 260px;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px,12vw,80px);
+  }
+
+  .hero-description {
+    max-width: 310px;
+    font-size: 13px;
+  }
+
+  .hero-side {
+    right: 10%;
+    bottom: 10%;
+    font-size: 8px;
+  }
+
+  .hero-side::before {
+    width: 130px;
+    height: 130px;
+    top: -32px;
+  }
+
+  .philosophy {
+    display: block;
+  }
+
+  .philosophy-image {
+    height: 240px;
+  }
+
+  .philosophy-copy {
+    padding: 55px 25px;
+  }
+
+  .philosophy-copy h2 {
+    font-size: 50px;
+  }
+
+  .treatments {
     padding: 75px 0;
+  }
+
+  .treatments-heading {
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .treatments-heading h2 {
+    font-size: 50px;
+    margin-bottom: 22px;
+  }
+
+  .treatments-intro {
+    margin-bottom: 22px;
+  }
+
+  .treatment-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 24px 12px;
+  }
+
+  .treatment-photo {
+    aspect-ratio: 1/1.05;
+  }
+
+  .treatment-info {
+    min-height: 190px;
+  }
+
+  .treatment-info h3 {
+    font-size: 21px;
+  }
+
+  .treatment-info p {
+    font-size: 11px;
+  }
+
+  .about {
+    padding: 80px 0;
+  }
+
+  .about-inner {
+    display: block;
+  }
+
+  .about-heading {
+    position: static;
+    margin-bottom: 30px;
+  }
+
+  .about-heading h2 {
+    font-size: 70px;
+  }
+
+  .about-copy {
+    columns: 1;
+    padding-top: 0;
+  }
+
+  .about-copy h3 {
+    font-size: 32px;
+  }
+
+  .about-copy p {
+    font-size: 13px;
+  }
+
+  .statement-inner {
+    display: block;
+    padding: 75px 0;
+  }
+
+  .statement h2 {
+    font-size: 45px;
+    margin: 20px 0;
+  }
+
+  .booking {
+    display: block;
+  }
+
+  .booking-image {
+    height: 240px;
+  }
+
+  .booking-image:last-child {
+    display: none;
+  }
+
+  .booking-center {
+    padding: 55px 25px 65px;
+  }
+
+  .contact {
+    padding: 70px 0;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .contact-title {
+    font-size: 50px;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-nav {
+    gap: 18px;
+  }
+
+  .floating-book {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 53px;
   }
 
   .treatment-grid {
     grid-template-columns: 1fr;
   }
 
-  .treatment img {
-    height: 330px;
+  .treatment-photo {
+    aspect-ratio: 1.4/1;
   }
 
-  .about-photo {
-    min-height: 400px;
-  }
-
-  .about-photo img {
-    height: 400px;
+  .treatment-info {
+    min-height: 125px;
   }
 }
 </style>
 </head>
 
-<body>
+<body id="top">
 
-<header>
-  <nav class="container">
+<!-- NAVIGATION -->
 
-    <a class="logo" href="#start">
-      BELOVED SKIN
-      <small>BY TERESA-BELOVED ELMORE</small>
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a class="brand" href="#top" aria-label="Beloved Skin Startseite">
+      <span class="brand-main">BELOVED SKIN</span>
+      <span class="brand-sub">BY TERESA-BELOVED ELMORE</span>
     </a>
 
-    <div class="navlinks">
+    <nav class="desktop-nav" aria-label="Hauptnavigation">
       <a href="#philosophie">Philosophie</a>
       <a href="#behandlungen">Behandlungen</a>
       <a href="#ueber-mich">Über mich</a>
       <a href="#kontakt">Kontakt</a>
-      <a class="nav-book"
-         href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
-         target="_blank"
-         rel="noopener noreferrer">
-         Termin buchen ↗
-      </a>
-    </div>
+    </nav>
 
+    <a class="btn header-book"
+       href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+       target="_blank"
+       rel="noopener noreferrer">
+      Termin buchen
+      <span class="btn-circle">↗</span>
+    </a>
+
+    <button class="menu-toggle"
+            id="menuToggle"
+            aria-label="Menü öffnen"
+            aria-expanded="false"
+            aria-controls="mobileNav">
+      ☰
+    </button>
+
+  </div>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobiles Menü">
+    <a href="#philosophie">Philosophie</a>
+    <a href="#behandlungen">Behandlungen</a>
+    <a href="#ueber-mich">Über mich</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+       target="_blank"
+       rel="noopener noreferrer">
+      Termin buchen ↗
+    </a>
   </nav>
 </header>
 
 <main>
 
-<section class="hero container" id="start">
+<!-- STARTSEITE -->
 
-  <div>
-    <div class="eyebrow">
-      Beauty Studio · Böblingen
+<section class="hero" aria-labelledby="heroTitle">
+
+  <div class="hero-photo">
+    <img
+      src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=2000&q=85"
+      alt="Ästhetische Beauty- und Hautpflegeaufnahme"
+      fetchpriority="high">
+  </div>
+
+  <div class="container hero-content">
+
+    <div class="section-label">
+      BEAUTY STUDIO · BÖBLINGEN
     </div>
 
-    <h1>
+    <h1 class="display" id="heroTitle">
       Feel good<br>
       in your skin.
     </h1>
 
-    <p>
-      Deine Haut verdient Aufmerksamkeit, Pflege
-      und ein gutes Gefühl. Entdecke individuelle
-      Kosmetikbehandlungen in einer ruhigen,
+    <p class="hero-description">
+      Individuelle Behandlungen, moderne Methoden
+      und ein ganzheitlicher Ansatz für gepflegte,
+      strahlende Haut – in einer ruhigen,
       persönlichen Atmosphäre.
     </p>
 
-    <a class="button"
+    <a class="btn"
        href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
        target="_blank"
        rel="noopener noreferrer">
-       Jetzt Termin buchen
+      Jetzt Termin buchen
+      <span class="btn-circle">↗</span>
     </a>
+
+    <a class="scroll-hint" href="#philosophie">
+      <span class="scroll-icon"></span>
+      SCROLL
+    </a>
+
   </div>
 
-  <div>
-    <img class="hero-image"
-         src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&auto=format&fit=crop&q=85"
-         alt="Kosmetische Gesichtsbehandlung">
+  <div class="hero-side" aria-hidden="true">
+    <span>SKIN CARE</span>
+    <span>SELF CARE</span>
+    <span>REAL RESULTS</span>
   </div>
 
 </section>
 
-<section class="section intro" id="philosophie">
+<!-- PHILOSOPHIE -->
 
-  <div class="container">
+<section class="philosophy" id="philosophie">
 
-    <div class="eyebrow">
-      The Beloved Skin Philosophy
+  <div class="philosophy-image">
+    <img
+      src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=85"
+      alt="Hautpflegeprodukte und cremige Texturen"
+      loading="lazy">
+  </div>
+
+  <div class="philosophy-copy">
+
+    <div class="section-label">
+      THE BELOVED SKIN PHILOSOPHY
     </div>
 
     <h2>
@@ -501,79 +1294,129 @@ footer a:hover {
 
   </div>
 
+  <div class="philosophy-right">
+
+    <img
+      src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+      alt="Ruhiger, moderner Wellnessbereich"
+      loading="lazy">
+
+    <div class="philosophy-words" aria-hidden="true">
+      <span>BEAUTY</span>
+      <span>BALANCE</span>
+      <span>CONFIDENCE</span>
+      <span>WELLNESS</span>
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section" id="behandlungen">
+<!-- BEHANDLUNGEN -->
+
+<section class="treatments" id="behandlungen">
 
   <div class="container">
 
-    <div class="treatments-header">
+    <div class="treatments-heading reveal">
 
-      <div class="eyebrow">
-        Our Treatments
+      <div>
+        <div class="section-label">
+          OUR TREATMENTS
+        </div>
+
+        <h2 class="section-title">
+          Deine Auszeit.<br>
+          Deine Haut. Dein Glow.
+        </h2>
       </div>
 
-      <h2>
-        Deine Auszeit.<br>
-        Deine Haut. Dein Glow.
-      </h2>
-
-      <p>
+      <p class="treatments-intro">
         Entdecke unsere Behandlungen und finde
         die passende Pflege für deine Haut und
         deine persönlichen Beauty-Ziele.
       </p>
 
+      <a class="btn btn-outline"
+         href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+         target="_blank"
+         rel="noopener noreferrer">
+        Alle Behandlungen ansehen
+        <span class="btn-circle">↗</span>
+      </a>
+
     </div>
 
     <div class="treatment-grid">
 
-      <article class="treatment">
-        <img
-          src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&auto=format&fit=crop&q=80"
-          alt="Hydro-Glow-Facial">
+      <!-- HYDRO-GLOW-FACIAL -->
 
-        <div class="treatment-content">
+      <article class="treatment-card reveal">
+
+        <div class="treatment-photo">
+          <img
+            src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=85"
+            alt="Hydro-Glow-Facial Gesichtsbehandlung"
+            loading="lazy">
+        </div>
+
+        <div class="treatment-info">
           <h3>Hydro-Glow-Facial</h3>
 
           <p>
-            Eine Kombination aus sanfter Reinigung,
-            Peeling und Feuchtigkeitspflege
+            Tiefenreinigung, Peeling und Feuchtigkeitspflege
             für ein frisches, gepflegtes Hautbild.
           </p>
 
-          <a href="#buchung">
-            Termin vereinbaren
-          </a>
+          <a class="card-arrow"
+             aria-label="Hydro-Glow-Facial buchen"
+             href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+             target="_blank"
+             rel="noopener noreferrer">↗</a>
         </div>
+
       </article>
 
-      <article class="treatment">
-        <img
-          src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=900&auto=format&fit=crop&q=80"
-          alt="Microneedling">
+      <!-- MICRONEEDLING -->
 
-        <div class="treatment-content">
+      <article class="treatment-card reveal">
+
+        <div class="treatment-photo">
+          <img
+            src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&q=85"
+            alt="Microneedling"
+            loading="lazy">
+        </div>
+
+        <div class="treatment-info">
           <h3>Microneedling</h3>
 
           <p>
-            Eine kosmetische Behandlung mit feinen
-            Nadeln zur gezielten Stimulation der Haut.
-            Die Eignung wird individuell besprochen.
+            Gezielte kosmetische Stimulation der Haut
+            zur Unterstützung eines ebenmäßigen Hautbildes.
           </p>
 
-          <a href="#buchung">
-            Termin vereinbaren
-          </a>
+          <a class="card-arrow"
+             aria-label="Microneedling buchen"
+             href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+             target="_blank"
+             rel="noopener noreferrer">↗</a>
         </div>
+
       </article>
 
-      <article class="treatment">
-        <img
-          src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=900&auto=format&fit=crop&q=80"
-          alt="Facial Treatments">
+      <!-- FACIAL TREATMENTS -->
 
-        <div class="treatment-content">
+      <article class="treatment-card reveal">
+
+        <div class="treatment-photo">
+          <img
+            src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&q=85"
+            alt="Individuelle Gesichtsbehandlung"
+            loading="lazy">
+        </div>
+
+        <div class="treatment-info">
           <h3>Facial Treatments</h3>
 
           <p>
@@ -581,38 +1424,55 @@ footer a:hover {
             für Reinigung, Pflege und Entspannung.
           </p>
 
-          <a href="#buchung">
-            Termin vereinbaren
-          </a>
+          <a class="card-arrow"
+             aria-label="Gesichtsbehandlung buchen"
+             href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+             target="_blank"
+             rel="noopener noreferrer">↗</a>
         </div>
+
       </article>
 
-      <article class="treatment">
-        <img
-          src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&auto=format&fit=crop&q=80"
-          alt="Lash Lifting">
+      <!-- LASH LIFTING -->
 
-        <div class="treatment-content">
+      <article class="treatment-card reveal">
+
+        <div class="treatment-photo">
+          <img
+            src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=85"
+            alt="Lash Lifting"
+            loading="lazy">
+        </div>
+
+        <div class="treatment-info">
           <h3>Lash Lifting</h3>
 
           <p>
-            Ein Wimpernlifting für einen natürlich
-            geschwungenen Wimpernlook, ganz ohne
-            tägliche Wimpernzange.
+            Für einen natürlich geschwungenen Wimpernlook,
+            ganz ohne tägliche Wimpernzange.
           </p>
 
-          <a href="#buchung">
-            Termin vereinbaren
-          </a>
+          <a class="card-arrow"
+             aria-label="Lash Lifting buchen"
+             href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+             target="_blank"
+             rel="noopener noreferrer">↗</a>
         </div>
+
       </article>
 
-      <article class="treatment">
-        <img
-          src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&auto=format&fit=crop&q=80"
-          alt="Brow Lifting">
+      <!-- BROW LIFTING -->
 
-        <div class="treatment-content">
+      <article class="treatment-card reveal">
+
+        <div class="treatment-photo">
+          <img
+            src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=85"
+            alt="Brow Lifting"
+            loading="lazy">
+        </div>
+
+        <div class="treatment-info">
           <h3>Brow Lifting</h3>
 
           <p>
@@ -620,66 +1480,85 @@ footer a:hover {
             und ein natürlich geformtes Ergebnis.
           </p>
 
-          <a href="#buchung">
-            Termin vereinbaren
-          </a>
+          <a class="card-arrow"
+             aria-label="Brow Lifting buchen"
+             href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+             target="_blank"
+             rel="noopener noreferrer">↗</a>
         </div>
+
       </article>
 
-      <article class="treatment">
-        <img
-          src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&auto=format&fit=crop&q=80"
-          alt="Waxing">
+      <!-- LASER -->
 
-        <div class="treatment-content">
-          <h3>Waxing</h3>
+      <article class="treatment-card reveal">
+
+        <div class="treatment-photo">
+          <img
+            src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=85"
+            alt="Laser-Haarentfernung"
+            loading="lazy">
+        </div>
+
+        <div class="treatment-info">
+          <h3>Laser</h3>
 
           <p>
-            Professionelle Haarentfernung mit Wachs
-            für ein angenehm glattes Hautgefühl.
+            Moderne Laserbehandlungen zur langfristigen
+            Haarreduktion und für ein glattes Hautgefühl.
           </p>
 
-          <a href="#buchung">
-            Termin vereinbaren
-          </a>
+          <a class="card-arrow"
+             aria-label="Laserbehandlung anfragen"
+             href="#kontakt">↗</a>
         </div>
+
+      </article>
+
+      <!-- MASSAGE -->
+
+      <article class="treatment-card reveal">
+
+        <div class="treatment-photo">
+          <img
+            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=85"
+            alt="Entspannende Massage"
+            loading="lazy">
+        </div>
+
+        <div class="treatment-info">
+          <h3>Massage</h3>
+
+          <p>
+            Wohltuende Massagen für Entspannung,
+            weniger Spannungen und ein rundum gutes Körpergefühl.
+          </p>
+
+          <a class="card-arrow"
+             aria-label="Massage buchen"
+             href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+             target="_blank"
+             rel="noopener noreferrer">↗</a>
+        </div>
+
       </article>
 
     </div>
-
-    <p style="text-align:center;margin-top:45px;">
-      <a class="button"
-         href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
-         target="_blank"
-         rel="noopener noreferrer">
-         Alle buchbaren Behandlungen ansehen
-      </a>
-    </p>
 
   </div>
 
 </section>
 
-<!-- ÜBER MICH – MIT TERESAS PORTRÄT -->
+<!-- ÜBER MICH -->
 
-<section class="section about" id="ueber-mich">
+<section class="about" id="ueber-mich">
 
-  <div class="container about-grid">
+  <div class="container about-inner">
 
-    <div class="about-photo">
+    <div class="about-heading reveal">
 
-      <img
-        
-src="Beloved Skin_ Teresa im Hero-Design.png"
-        alt="Teresa-Beloved Elmore – Gründerin von Beloved Skin"
-        loading="lazy">
-
-    </div>
-
-    <div class="about-text">
-
-      <div class="eyebrow">
-        The Face Behind Beloved Skin
+      <div class="section-label">
+        THE FACE BEHIND BELOVED SKIN
       </div>
 
       <h2>
@@ -687,34 +1566,87 @@ src="Beloved Skin_ Teresa im Hero-Design.png"
         Teresa.
       </h2>
 
-      <p>
-        Ich bin Teresa-Beloved Elmore und die
-        Gründerin von Beloved Skin.
-      </p>
+      <span class="handwriting">
+        More than<br>Skin Care
+      </span>
 
-      <p>
-        Meine Leidenschaft gilt der Kosmetik,
-        der Hautpflege und dem Wunsch,
-        Menschen dabei zu unterstützen,
-        sich in ihrer eigenen Haut wohlzufühlen.
-      </p>
+    </div>
 
-      <p>
-        Mit Beloved Skin möchte ich einen Ort
-        schaffen, an dem du dich willkommen fühlst,
-        zur Ruhe kommen kannst und deine individuellen
-        Wünsche im Mittelpunkt stehen.
-      </p>
+    <div>
 
-      <p>
-        Ich freue mich darauf,
-        dich persönlich kennenzulernen.
-      </p>
+      <div class="about-copy reveal">
 
-      <a class="button button-outline"
-         href="#kontakt">
-         Kontakt aufnehmen
-      </a>
+        <h3>Wie schön, dass du da bist!</h3>
+
+        <p>
+          Ich bin Teresa-Beloved Elmore, 22 Jahre alt,
+          staatlich anerkannte Kosmetikerin und die
+          Gründerin von Beloved Skin.
+        </p>
+
+        <p>
+          Im Jahr 2026 habe ich meine Ausbildung an der
+          Kosmetikschule Lehmann erfolgreich abgeschlossen
+          und meinen Abschluss als staatlich anerkannte
+          Kosmetikerin erworben. Damit habe ich mir den
+          Wunsch erfüllt, meine Leidenschaft für Schönheit,
+          Hautpflege und Wohlbefinden in meinem eigenen
+          Kosmetikstudio zu verwirklichen.
+        </p>
+
+        <p>
+          Unterstützt und inspiriert werde ich dabei auch
+          von meiner Mutter, die bereits seit vielen Jahren
+          ihr eigenes Fußpflegestudio führt. Durch ihre
+          langjährige Erfahrung im Beauty- und Pflegebereich
+          durfte ich früh Einblicke in diese Welt gewinnen.
+          Nun gehe ich meinen eigenen Weg und freue mich,
+          meine Leidenschaft mit Beloved Skin zum Beruf
+          zu machen.
+        </p>
+
+        <p>
+          Mit meinem Kosmetikstudio möchte ich einen Ort
+          schaffen, an dem du dich rundum wohlfühlen,
+          entspannen und eine kleine Auszeit vom Alltag
+          genießen kannst.
+        </p>
+
+        <p>
+          Ich verbinde professionelle Kosmetik mit modernen
+          Behandlungsmethoden, persönlicher Beratung und
+          viel Liebe zum Detail. Dabei ist es mir besonders
+          wichtig, auf deine Hautbedürfnisse einzugehen,
+          deine natürliche Schönheit zu unterstreichen
+          und dir ein angenehmes Behandlungserlebnis
+          zu schenken.
+        </p>
+
+        <p>
+          Für mich ist Kosmetik mehr als nur Hautpflege.
+          Es geht darum, sich selbst etwas Gutes zu tun,
+          sich wohl in seiner Haut zu fühlen und sich
+          bewusst Zeit für sich selbst zu nehmen.
+        </p>
+
+        <p>
+          Ich freue mich darauf, dich bei Beloved Skin
+          willkommen zu heißen und dich auf deiner
+          persönlichen Beauty-Reise zu begleiten.
+        </p>
+
+        <p class="signature">
+          Von Herzen, Teresa ♡
+        </p>
+
+      </div>
+
+      <div class="about-action">
+        <a class="btn btn-outline" href="#kontakt">
+          Kontakt aufnehmen
+          <span class="btn-circle">↗</span>
+        </a>
+      </div>
 
     </div>
 
@@ -722,34 +1654,53 @@ src="Beloved Skin_ Teresa im Hero-Design.png"
 
 </section>
 
+<!-- ZITAT -->
+
 <section class="statement">
 
-  <div class="container">
+  <div class="statement-photo">
+    <img
+      src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=75"
+      alt=""
+      loading="lazy">
+  </div>
 
-    <div class="eyebrow" style="color:#e5e9dd;">
-      A little reminder
+  <div class="container statement-inner">
+
+    <div class="section-label">
+      A LITTLE REMINDER
     </div>
 
     <h2>
-      Beauty begins with feeling comfortable
-      in your own skin.
+      Beauty begins with feeling<br>
+      comfortable in your own skin.
     </h2>
 
     <p>
-      Ein Moment nur für dich.
-      Mit Zeit, Aufmerksamkeit und individueller Pflege.
+      Ein Moment nur für dich.<br>
+      Mit Zeit, Aufmerksamkeit und
+      individueller Pflege.
     </p>
 
   </div>
 
 </section>
 
-<section class="section" id="buchung">
+<!-- TERMINBUCHUNG -->
 
-  <div class="container center">
+<section class="booking" id="buchung">
 
-    <div class="eyebrow">
-      Book Your Appointment
+  <div class="booking-image">
+    <img
+      src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=85"
+      alt="Ruhiger Wellnessbereich"
+      loading="lazy">
+  </div>
+
+  <div class="booking-center reveal">
+
+    <div class="section-label">
+      BOOK YOUR APPOINTMENT
     </div>
 
     <h2>
@@ -761,74 +1712,106 @@ src="Beloved Skin_ Teresa im Hero-Design.png"
       online über unser Buchungssystem.
     </p>
 
-    <a class="button"
+    <a class="btn"
        href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
        target="_blank"
        rel="noopener noreferrer">
-       Online-Termin buchen
+      Online-Termin buchen
+      <span class="btn-circle">↗</span>
     </a>
 
   </div>
 
+  <div class="booking-image">
+    <img
+      src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85"
+      alt="Ästhetisches Studiointerieur"
+      loading="lazy">
+  </div>
+
 </section>
 
-<section class="section intro" id="kontakt">
+<!-- KONTAKT -->
+
+<section class="contact" id="kontakt">
 
   <div class="container contact-grid">
 
     <div>
+      <div class="section-label">GET IN TOUCH</div>
 
-      <div class="eyebrow">
-        Get in Touch
-      </div>
-
-      <h2>
+      <h2 class="contact-title">
         Let's connect.
       </h2>
 
-      <p>
-        Du hast Fragen zu einer Behandlung
-        oder möchtest mehr über Beloved Skin erfahren?
+      <p class="contact-intro">
+        Du hast Fragen zu einer Behandlung oder
+        möchtest mehr über Beloved Skin erfahren?
         Ich freue mich auf deine Nachricht.
+      </p>
+    </div>
+
+    <div class="contact-block">
+
+      <div class="section-label">STUDIO</div>
+
+      <address>
+        Beloved Skin<br>
+        by Teresa-Beloved Elmore<br>
+        Breslauer Straße 14<br>
+        71034 Böblingen
+      </address>
+
+      <p>
+        <a href="tel:+491735786463">
+          +49 173 5786463
+        </a>
+      </p>
+
+      <p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Breslauer+Stra%C3%9Fe+14%2C+71034+B%C3%B6blingen"
+           target="_blank"
+           rel="noopener noreferrer">
+          Route anzeigen ↗
+        </a>
       </p>
 
     </div>
 
-    <div>
+    <div class="contact-block">
 
-      <span class="contact-label">
-        Studio
-      </span>
+      <div class="section-label">INSTAGRAM</div>
 
       <p>
-        Beloved Skin by Teresa-Beloved Elmore<br>
-        Böblingen
-      </p>
-
-      <span class="contact-label">
-        Instagram
-      </span>
-
-      <p>
-        <a
-          href="https://www.instagram.com/thebelovedskin/"
-          target="_blank"
-          rel="noopener noreferrer">
-          @thebelovedskin
+        <a href="https://www.instagram.com/thebelovedskin/"
+           target="_blank"
+           rel="noopener noreferrer">
+          @thebelovedskin ↗
         </a>
       </p>
 
-      <span class="contact-label">
-        Terminbuchung
-      </span>
+      <p>
+        Folge Beloved Skin für Einblicke,
+        Beauty-Tipps und Neuigkeiten.
+      </p>
+
+    </div>
+
+    <div class="contact-block">
+
+      <div class="section-label">TERMINBUCHUNG</div>
 
       <p>
-        <a
-          href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
-          target="_blank"
-          rel="noopener noreferrer">
+        <a href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+           target="_blank"
+           rel="noopener noreferrer">
           Jetzt online buchen ↗
         </a>
+      </p>
+
+      <p>
+        Deinen nächsten Beauty-Termin
+        bequem online auswählen.
       </p>
 
     </div>
@@ -839,74 +1822,120 @@ src="Beloved Skin_ Teresa im Hero-Design.png"
 
 </main>
 
-<footer>
+<!-- FOOTER -->
+
+<footer class="footer">
 
   <div class="container">
 
-    <div class="footer-grid">
+    <div class="footer-inner">
 
-      <div>
+      <a class="brand" href="#top">
+        <span class="brand-main">BELOVED SKIN</span>
+        <span class="brand-sub">BY TERESA-BELOVED ELMORE</span>
+      </a>
 
-        <div class="logo" style="color:white;">
-          BELOVED SKIN
-          <small>BY TERESA-BELOVED ELMORE</small>
-        </div>
+      <nav class="footer-nav" aria-label="Footernavigation">
+        <a href="#top">Startseite</a>
+        <a href="#behandlungen">Behandlungen</a>
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
 
-        <p style="font-size:13px;margin-top:20px;">
-          Your skin. Your confidence. Your glow.
-        </p>
-
-      </div>
-
-      <div>
-
-        <p><strong>Explore</strong></p>
-        <p><a href="#start">Startseite</a></p>
-        <p><a href="#behandlungen">Behandlungen</a></p>
-        <p><a href="#ueber-mich">Über mich</a></p>
-        <p><a href="#kontakt">Kontakt</a></p>
-
-      </div>
-
-      <div>
-
-        <p><strong>Follow us</strong></p>
-
-        <p>
-          <a
-            href="https://www.instagram.com/thebelovedskin/"
-            target="_blank"
-            rel="noopener noreferrer">
-            Instagram
-          </a>
-        </p>
-
-        <p>
-          <a
-            href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
-            target="_blank"
-            rel="noopener noreferrer">
-            Online buchen
-          </a>
-        </p>
-
+      <div class="footer-meta">
+        <span>BEAUTY STUDIO · BÖBLINGEN</span>
+        <a class="back-top" href="#top" aria-label="Nach oben">↑</a>
       </div>
 
     </div>
 
-    <div class="footer-bottom">
-      © <span id="year"></span>
-      Beloved Skin by Teresa-Beloved Elmore.
-      Alle Rechte vorbehalten.
+    <div class="footer-legal">
+
+      <span>
+        © <span id="year"></span>
+        Beloved Skin by Teresa-Beloved Elmore.
+        Alle Rechte vorbehalten.
+      </span>
+
+      <span>
+        Breslauer Straße 14 · 71034 Böblingen
+      </span>
+
     </div>
 
   </div>
 
 </footer>
 
+<!-- MOBILER BUCHUNGSBUTTON -->
+
+<a class="btn floating-book"
+   href="https://connect.shore.com/bookings/beloved-skin-by-teresa-beloved-elmore/services?locale=de"
+   target="_blank"
+   rel="noopener noreferrer">
+  Termin buchen
+  <span class="btn-circle">↗</span>
+</a>
+
 <script>
+/* AUTOMATISCHE JAHRESZAHL */
+
 document.getElementById("year").textContent =
   new Date().getFullYear();
+
+/* MOBILES MENÜ */
+
+const menuToggle = document.getElementById("menuToggle");
+const mobileNav = document.getElementById("mobileNav");
+
+menuToggle.addEventListener("click", function() {
+  const isOpen = mobileNav.classList.toggle("open");
+
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute(
+    "aria-label",
+    isOpen ? "Menü schließen" : "Menü öffnen"
+  );
+
+  menuToggle.textContent = isOpen ? "×" : "☰";
+});
+
+mobileNav.querySelectorAll("a").forEach(function(link) {
+  link.addEventListener("click", function() {
+    mobileNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Menü öffnen");
+    menuToggle.textContent = "☰";
+  });
+});
+
+/* DEZENTE SCROLL-ANIMATIONEN */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08
+  });
+
+  revealElements.forEach(function(element) {
+    observer.observe(element);
+  });
+
+} else {
+  revealElements.forEach(function(element) {
+    element.classList.add("visible");
+  });
+}
 </script>
 
 </body>
