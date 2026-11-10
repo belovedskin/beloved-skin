@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beloved Skin | Admin</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f0e9;color:#3c3029;font-family:Arial,sans-serif}
+header{padding:28px;text-align:center;background:#e8ded2}
+.brand{font-family:Georgia,serif;font-size:30px;letter-spacing:3px}
+.subtitle{font-size:11px;letter-spacing:3px;margin-top:8px}
+main{max-width:900px;margin:55px auto;padding:0 20px}
+.card{background:#fffdf9;border:1px solid #e3d8cb;border-radius:14px;padding:30px;box-shadow:0 8px 30px #3c30290a}
+h1{font-family:Georgia,serif;font-weight:normal;font-size:28px}
+label{display:block;margin:20px 0 7px;font-size:13px}
+input{width:100%;padding:14px;border:1px solid #cfc1b3;border-radius:7px;font-size:16px;background:white}
+button{padding:14px 20px;background:#55463b;color:white;border:0;border-radius:7px;cursor:pointer;font-size:14px}
+button:disabled{opacity:.6}
+.full{width:100%;margin-top:24px}
+.error{color:#a13232;font-size:13px;margin-top:15px}
+.hidden{display:none}
+.top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:25px}
+.tile{background:#f5f0e9;border-radius:10px;padding:22px}
+.tile h2{font-family:Georgia,serif;font-weight:normal;font-size:21px}
+.tile p{font-size:13px;line-height:1.6;color:#71645a}
+small{color:#817367}
+</style>
+</head>
+<body>
+<header>
+<div class="brand">BELOVED SKIN</div>
+<div class="subtitle">BY TERESA-BELOVED ELMORE</div>
+</header>
+
+<main>
+<section id="login" class="card">
+<h1>Admin Login</h1>
+<p>Willkommen zurück. Melde dich an, um deinen Verwaltungsbereich zu öffnen.</p>
+<form id="loginForm">
+<label for="email">E-Mail-Adresse</label>
+<input id="email" type="email" autocomplete="username" required>
+<label for="password">Passwort</label>
+<input id="password" type="password" autocomplete="current-password" required>
+<button id="loginButton" class="full" type="submit">Anmelden</button>
+<p id="error" class="error" role="alert"></p>
+</form>
+</section>
+
+<section id="dashboard" class="hidden">
+<div class="top">
+<div>
+<small>BELOVED SKIN MANAGEMENT</small>
+<h1>Dein Dashboard</h1>
+</div>
+<button id="logout">Abmelden</button>
+</div>
+<div class="grid">
+<div class="tile">
+<h2>Kunden</h2>
+<p>Die Kundenverwaltung wird als Nächstes angebunden.</p>
+</div>
+<div class="tile">
+<h2>Termine</h2>
+<p>Eine Terminübersicht ist noch nicht verbunden.</p>
+</div>
+<div class="tile">
+<h2>Behandlungen</h2>
+<p>Die Verwaltung deiner Behandlungen folgt.</p>
+</div>
+<div class="tile">
+<h2>Website</h2>
+<p>Die Bearbeitung deiner Website ist noch nicht eingerichtet.</p>
+</div>
+</div>
+</section>
+</main>
+
+<script>
+const API="https://beloved-skin-admin.rosandic-joel.workers.dev";
+const login=document.getElementById("login");
+const dashboard=document.getElementById("dashboard");
+const error=document.getElementById("error");
+const button=document.getElementById("loginButton");
+
+function showDashboard(){
+ login.classList.add("hidden");
+ dashboard.classList.remove("hidden");
+}
+
+document.getElementById("loginForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ error.textContent="";
+ button.disabled=true;
+ button.textContent="Anmeldung läuft...";
+ try{
+  const response=await fetch(API+"/api/login",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify({
+    email:document.getElementById("email").value.trim(),
+    password:document.getElementById("password").value
+   })
+  });
+  const data=await response.json();
+  if(!response.ok)throw new Error(data.error||"Anmeldung fehlgeschlagen");
+  if(!data.token)throw new Error("Kein Sitzungstoken erhalten");
+  sessionStorage.setItem("beloved_admin_token",data.token);
+  document.getElementById("password").value="";
+  showDashboard();
+ }catch(err){
+  error.textContent=err.message;
+ }finally{
+  button.disabled=false;
+  button.textContent="Anmelden";
+ }
+});
+
+document.getElementById("logout").addEventListener("click",()=>{
+ sessionStorage.removeItem("beloved_admin_token");
+ dashboard.classList.add("hidden");
+ login.classList.remove("hidden");
+});
+</script>
+</body>
+</html>
